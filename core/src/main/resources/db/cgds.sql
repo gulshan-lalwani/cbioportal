@@ -383,7 +383,7 @@ CREATE TABLE `mutation_count` (
 --Table structure for table `sv`
 --
 CREATE TABLE `sv`(
-        `SAMPLE_ID` varchar(25) NOT NULL,
+        `SAMPLE_ID` int(11) NOT NULL,
         `INTERNAL_ID` int(255) NOT NULL auto_increment,
         `SV_VARIANT_ID` int(255) NOT NULL,
         `BREAKPOINT_TYPE` varchar(25),
@@ -414,7 +414,7 @@ CREATE TABLE `sv`(
         `VARIANT_STATUS_NAME` varchar(255),
         `GENETIC_PROFILE_ID` varchar(255) NOT NULL,
         PRIMARY KEY (`SV_VARIANT_ID`),
-        FOREIGN KEY (`SAMPLE_ID`) REFERENCES `sample` (`STABLE_ID`) ON DELETE CASCADE,
+        FOREIGN KEY (`SAMPLE_ID`) REFERENCES `sample` (`INTERNAL_ID`) ON DELETE CASCADE,
         FOREIGN KEY (`SITE1_GENE`) REFERENCES `gene` (`HUGO_GENE_SYMBOL`) ON DELETE CASCADE,
         FOREIGN KEY (`SITE2_GENE`) REFERENCES `gene` (`HUGO_GENE_SYMBOL`) ON DELETE CASCADE,
         FOREIGN KEY (`GENETIC_PROFILE_ID`) REFERENCES `genetic_profile` (`STABLE_ID`) ON DELETE CASCADE,
