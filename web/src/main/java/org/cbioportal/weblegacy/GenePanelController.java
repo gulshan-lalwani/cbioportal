@@ -32,14 +32,13 @@
 
 package org.cbioportal.weblegacy;
 
-import org.cbioportal.service.GenePanelService;
-import org.cbioportal.model.GenePanel;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.cbioportal.model.GenePanel;
+import org.cbioportal.service.GenePanelService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-
+import org.springframework.web.bind.annotation.*;
 
 /**
  *
@@ -48,19 +47,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RestController
 public class GenePanelController {
-    
+
     @Autowired
     private GenePanelService genePanelService;
-    
+
     @ApiOperation(value = "Get gene panel information",
             nickname = "getGenePanel",
             notes = "")
     @Transactional
     @RequestMapping(method = RequestMethod.GET, value = "/genepanel")
-    public GenePanel getGenePanel(@ApiParam(required = true, value = "Internal sample id")
-            @RequestParam(required = true) Integer sampleId,
-            @ApiParam(required = true, value = "Internal id of genetic profile")
-            @RequestParam(required = true) Integer profileId) {
+    public GenePanel getGenePanel(@ApiParam(required = true, value = "sample id, such as those returned by /api/samples")
+            @RequestParam(required = true) String sampleId,
+            @ApiParam(required = true, value = "genetic profile id, such as those returned by /api/geneticprofiles")
+            @RequestParam(required = true) String profileId) {
         return genePanelService.getGenePanelBySampleIdAndProfileId(sampleId, profileId);
-    }    
+    }
 }

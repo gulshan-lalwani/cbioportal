@@ -42,8 +42,7 @@ import java.util.*;
 
 public interface GenePanelRepository {
     
-        GenePanel  getGenePanelBySampleIdAndProfileId(Integer sampleId, Integer profileId);
-        
+        GenePanel getGenePanelBySampleIdAndProfileId(String sampleId, String profileId);
         // TODO: All of the below methods are for importing purposes only. They should be
         // removed once a proper import solution is put in place.
         GenePanel getGenePanelByStableId(String stableId);
@@ -52,9 +51,7 @@ public interface GenePanelRepository {
         Gene getGeneByEntrezGeneId(Integer geneId);
         Gene getGeneByHugoSymbol(String symbol);
         Gene getGeneByAlias(String symbol);
-        
         boolean sampleProfileMappingExistsByProfile(Integer profileId);
-        
         void insertGenePanel(Map<String, Object> map);
         void deleteGenePanel(Integer internalId);        
         void deleteGenePanelList(Integer internalId);    

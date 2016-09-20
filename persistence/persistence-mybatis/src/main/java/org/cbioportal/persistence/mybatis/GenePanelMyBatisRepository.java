@@ -37,103 +37,101 @@ package org.cbioportal.persistence.mybatis;
  * @author heinsz
  */
 
+import java.util.*;
 import org.cbioportal.model.*;
 import org.cbioportal.persistence.GenePanelRepository;
-import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class GenePanelMyBatisRepository implements GenePanelRepository {
-    
+
     @Autowired
     GenePanelMapper genePanelMapper;
 
     @Override
-    public GenePanel getGenePanelBySampleIdAndProfileId(Integer sampleId, Integer profileId) {
+    public GenePanel getGenePanelBySampleIdAndProfileId(String sampleId, String profileId) {
         return genePanelMapper.getGenePanelBySampleIdAndProfileId(sampleId, profileId);
     }
-    
-    
+
     // TODO: All of the below methods are for importing purposes only. They should be
-    // removed once a proper import solution is put in place.    
+    // removed once a proper import solution is put in place.
     @Override
     public GenePanel getGenePanelByStableId(String stableId) {
         return genePanelMapper.getGenePanelByStableId(stableId);
     }
-    
+
     @Override
     public Sample getSampleByStableIdAndStudyId(String stableId, String studyId) {
         return genePanelMapper.getSampleByStableIdAndStudyId(stableId, studyId);
-    }    
-    
+    }
+
     @Override
     public GeneticProfile getGeneticProfileByStableId(String stableId) {
         return genePanelMapper.getGeneticProfileByStableId(stableId);
-    }     
-    
+    }
+
     @Override
     public Gene getGeneByEntrezGeneId(Integer geneId) {
         return genePanelMapper.getGeneByEntrezGeneId(geneId);
-    }       
-    
+    }
+
     @Override
     public Gene getGeneByHugoSymbol(String symbol) {
         return genePanelMapper.getGeneByHugoSymbol(symbol);
-    } 
+    }
 
     @Override
     public Gene getGeneByAlias(String symbol) {
         return genePanelMapper.getGeneByAlias(symbol);
-    }     
-    
+    }
+
     @Override
     public boolean sampleProfileMappingExistsByProfile(Integer profileId) {
         return genePanelMapper.sampleProfileMappingExistsByProfile(profileId) != 0;
     }
-    
+
     @Override
     public void insertGenePanel(Map<String, Object> map) {
         genePanelMapper.insertGenePanel(map);
     }
-    
+
     @Override
     public void deleteGenePanel(Integer internalId) {
         genePanelMapper.deleteGenePanel(internalId);
-    }    
-    
+    }
+
     @Override
     public void deleteGenePanelList(Integer internalId) {
         genePanelMapper.deleteGenePanelList(internalId);
-    }       
-    
+    }
+
     @Override
     public void deleteSampleProfileMappingByProfile(Integer profileId) {
         genePanelMapper.deleteSampleProfileMappingByProfile(profileId);
     }
-    
+
     @Override
     public void deleteSampleProfileMappingByPanel(Integer panelId) {
         genePanelMapper.deleteSampleProfileMappingByPanel(panelId);
-    }    
-    
+    }
+
     @Override
     public void insertGenePanelList(Map<String, Object> map) {
         genePanelMapper.insertGenePanelList(map);
-    }    
-   
+    }
+
     @Override
     public void insertGenePanelListByHugo(Map<String, Object> map) {
         genePanelMapper.insertGenePanelListByHugo(map);
-    }        
-    
+    }
+
     @Override
     public void insertGenePanelSampleProfileMap(Map<String, Object> map) {
         genePanelMapper.insertGenePanelSampleProfileMap(map);
-    }    
-    
+    }
+
     public void setGenePanelMapper(GenePanelMapper genePanelMapper) {
         this.genePanelMapper = genePanelMapper;
     }
-    
 }

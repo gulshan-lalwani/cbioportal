@@ -53,21 +53,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Configurable
 public class GenePanelMyBatisRepositoryTest {
     String genePanelStableId = "mybatisTestPanel";
-    Integer genePanelInternalId;
     
     @Autowired
     private GenePanelMyBatisRepository genePanelMyBatisRepository;
     
     @Test
     public void getGenePanelBySampleAndProfileId() {
-        GenePanel result = genePanelMyBatisRepository.getGenePanelBySampleIdAndProfileId(1, 2);
+        GenePanel result = genePanelMyBatisRepository.getGenePanelBySampleIdAndProfileId("TCGA-A1-A0SB-01", "study_tcga_pub_gistic");
         Assert.assertEquals("TESTPANEL1", result.getStableId());
     }
     
     @Test
-    public void getGenePanelByStaleId() {
+    public void getGenePanelByStableId() {
         GenePanel result = genePanelMyBatisRepository.getGenePanelByStableId("TESTPANEL1");
-        Assert.assertEquals((Integer) 1, result.getInternalId());
+        Assert.assertEquals("TESTPANEL1", result.getStableId());
     }
     
     @Test

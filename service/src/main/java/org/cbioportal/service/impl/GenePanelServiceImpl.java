@@ -22,8 +22,7 @@ public class GenePanelServiceImpl implements GenePanelService {
     @Autowired
     private GenePanelRepository genePanelRepository;
 
-    public GenePanel getGenePanelBySampleIdAndProfileId(Integer sampleId, Integer profileId) {
+    public GenePanel getGenePanelBySampleIdAndProfileId(String sampleId, String profileId) {
         return genePanelRepository.getGenePanelBySampleIdAndProfileId(sampleId, profileId);
     }
-    
 }

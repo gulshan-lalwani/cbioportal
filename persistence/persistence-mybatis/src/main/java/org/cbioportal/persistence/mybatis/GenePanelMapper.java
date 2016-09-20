@@ -37,34 +37,28 @@ package org.cbioportal.persistence.mybatis;
  * @author heinsz
  */
 
-import org.cbioportal.model.*;
 import java.util.*;
 import org.apache.ibatis.annotations.Param;
+import org.cbioportal.model.*;
 
 public interface GenePanelMapper {
-    
-    GenePanel getGenePanelBySampleIdAndProfileId(@Param("sampleId") Integer sampleId,
-            @Param("profileId") Integer profileId);
-    
+
+    GenePanel getGenePanelBySampleIdAndProfileId(@Param("sampleId") String sampleId, @Param("profileId") String profileId);
     // TODO: All of the below methods are for importing purposes only. They should be
-    // removed once a proper import solution is put in place.    
+    // removed once a proper import solution is put in place.
     GenePanel getGenePanelByStableId(@Param("stableId") String stableId);
     Sample getSampleByStableIdAndStudyId(@Param("stableId") String stableId, @Param("studyId") String studyId);
     GeneticProfile getGeneticProfileByStableId(@Param("stableId") String stableId);
     Gene getGeneByEntrezGeneId(@Param("geneId") Integer geneId);
     Gene getGeneByHugoSymbol(@Param("symbol") String symbol);
     Gene getGeneByAlias(@Param("symbol") String symbol);
-    
     Integer sampleProfileMappingExistsByProfile(@Param("profileId") Integer profileId);
-    
-    void insertGenePanel(Map<String, Object> map); 
+    void insertGenePanel(Map<String, Object> map);
     void deleteGenePanel(@Param("internalId") Integer internalId);
-    void deleteGenePanelList(@Param("internalId") Integer internalId);    
-    void deleteSampleProfileMappingByProfile(@Param("profileId") Integer profileId);    
+    void deleteGenePanelList(@Param("internalId") Integer internalId);
+    void deleteSampleProfileMappingByProfile(@Param("profileId") Integer profileId);
     void deleteSampleProfileMappingByPanel(@Param("panelId") Integer panelId);
-    
     void insertGenePanelList(Map<String, Object> map);
     void insertGenePanelListByHugo(Map<String, Object> map);
-    
     void insertGenePanelSampleProfileMap(Map<String, Object> map);
 }

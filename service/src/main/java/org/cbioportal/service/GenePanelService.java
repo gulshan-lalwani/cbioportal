@@ -13,7 +13,5 @@ package org.cbioportal.service;
 import org.cbioportal.model.GenePanel;
 
 public interface GenePanelService {
-    
-    GenePanel getGenePanelBySampleIdAndProfileId(Integer sampleId, Integer profileId);   
-    
+    GenePanel getGenePanelBySampleIdAndProfileId(String sampleId, String profileId);
 }
